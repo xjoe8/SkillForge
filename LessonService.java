@@ -13,9 +13,7 @@ public class LessonService {
         this.db = db;
     }
 
-    // ---------------------------------------
-    // Add a lesson to a course
-    // ---------------------------------------
+   
     public Lesson addLesson(String courseId, Lesson lesson) {
         JSONArray coursesArray = db.loadCourses();
 
@@ -40,10 +38,8 @@ public class LessonService {
         return null;
     }
 
-    // ---------------------------------------
-    // Edit a lesson
-    // ---------------------------------------
-    public boolean cditLesson(String courseId, String lessonId, String newTitle, String newContent) {
+   
+    public boolean editLesson(String courseId, String lessonId, String newTitle, String newContent) {
         JSONArray coursesArray = db.loadCourses();
 
         for (int i = 0; i < coursesArray.length(); i++) {
@@ -71,9 +67,6 @@ public class LessonService {
         return false; // Lesson not found
     }
 
-    // ---------------------------------------
-    // Delete a lesson
-    // ---------------------------------------
     public boolean deleteLesson(String courseId, String lessonId) {
         JSONArray coursesArray = db.loadCourses();
 
@@ -121,3 +114,4 @@ public class LessonService {
         return list;
     }
 }
+
