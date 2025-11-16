@@ -1,4 +1,4 @@
-
+package lab7;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -52,7 +52,7 @@ public class JsonDataBaseManager {
     public void saveCourses(JSONArray courses) {
         try {
             Files.write( // overwrites the file with the new content given to it
-                    Paths.get(this.usersPath), // converts a file path ( string ) into a path object
+                    Paths.get(this.coursesPath), // converts a file path ( string ) into a path object
                     courses.toString(4).getBytes()); // converts it into a formatted text , with 4 spaces indentation
         }
         catch (IOException e) {
@@ -159,30 +159,17 @@ public class JsonDataBaseManager {
         return lesson;
     }
     
-    public JSONObject toJson(User user) {
-        JSONObject J = new JSONObject();
-        return J;
+/*    public JSONObject toJson(User user) {
+        return user.toJSONObject();
     }
-    
+
     public JSONObject toJson(Student student) {
-        JSONObject J = new JSONObject();
-        return J;
+        return student.toJSONObject(); // Just call the object's own method
     }
-    
-    public JSONObject toJson(Instructor imstructor) {
-        JSONObject J = new JSONObject();
-        return J;
-    }
-    
-    public JSONObject toJson(Course course) {
-        JSONObject J = new JSONObject();
-        return J;
-    }
-    
-    public JSONObject toJson( Lesson lesson) {
-        JSONObject J = new JSONObject();
-        return J;
-    }
+
+    public JSONObject toJson(Instructor instructor) {
+        return instructor.toJSONObject(); // Just call the object's own method
+    }*/
     
     public String generateId() {
         return UUID.randomUUID().toString();
