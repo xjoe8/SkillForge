@@ -34,7 +34,7 @@ public class Course {
     
     //Lessons Management methods:---------------------------------------------------------
     public void addLesson(Lesson lesson){
-        if (lesson != null && getLesson(lesson.getLessonId())==null){
+        if (lesson != null && getLesson((String) lesson.getLessonId())==null){
             lessons.add(lesson);
         }
     }
@@ -137,4 +137,8 @@ public class Course {
     public int hashCode() { //Talama 3amalana edit fel equal() yb2a lazm n3ml edit fel hashCode 3ashan my7slsh buggs
         return courseId != null ? courseId.hashCode() : 0;
     }*/
+
+    public int getEnrolledStudentCount() {
+        return students.size();
+    }
 }
