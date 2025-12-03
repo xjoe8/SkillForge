@@ -18,7 +18,7 @@ public class StudentDashboardFrame extends javax.swing.JDialog {
     /**
      * New constructor with Student parameter
      */
-    public StudentDashboardFrame(java.awt.Frame parent, boolean modal, Student student) {
+    public StudentDashboardFrame(java.awt.Frame parent, boolean modal, Student student, JsonDataBaseManager dbManager) {
         super(parent, modal);
         this.currentStudent = student;
         initComponents();
@@ -361,7 +361,11 @@ public class StudentDashboardFrame extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        javax.swing.JOptionPane.showMessageDialog(this, "Enrollment feature to be implemented");
+        // Open Course Browser
+        CourseBrowserFrame courseBrowser = new CourseBrowserFrame((java.awt.Frame) null, true, currentStudent);
+    courseBrowser.setVisible(true);
+    // Refresh dashboard when returning from course browser
+    loadStudentData();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
