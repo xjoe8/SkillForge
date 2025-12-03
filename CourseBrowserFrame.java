@@ -7,10 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- *
- * @author User
- */
+
 public class CourseBrowserFrame extends javax.swing.JDialog {
     private Student currentStudent;
     private List<Course> allCourses;
@@ -409,7 +406,19 @@ public class CourseBrowserFrame extends javax.swing.JDialog {
                 actionButton.setText("Start Learning");
                 actionButton.setBackground(new Color(33, 150, 243)); // Blue
             }
-            actionButton.addActionListener(e -> showCourseDetailsDialog(course));
+            //actionButton.addActionListener(e -> showCourseDetailsDialog(course));
+            
+                actionButton.addActionListener(e -> {
+                System.out.println("Course card clicked: " + course.getCourseName());
+                System.out.println("Calling showCourseDetailsDialog...");
+                try {
+                showCourseDetailsDialog(course);
+                System.out.println("showCourseDetailsDialog completed");
+                } catch (Exception ex) {
+                System.out.println("Error in showCourseDetailsDialog: " + ex.getMessage());
+                ex.printStackTrace();
+    }
+});
         } else {
             actionButton.setText("Enroll Now");
             actionButton.setBackground(new Color(156, 39, 176)); // Purple

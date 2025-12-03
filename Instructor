@@ -1,0 +1,42 @@
+package lab7;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Instructor extends User {
+    private List<String> createdCourses;
+
+    public Instructor(String userId, String username, String email, String passwordHash) {
+        super(userId, username, email, passwordHash, "instructor");
+        this.createdCourses = new ArrayList<>();
+    }
+
+    public void addCreatedCourse(String courseId) {
+        if (!createdCourses.contains(courseId)) {
+            createdCourses.add(courseId);
+        }
+    }
+
+    public List<String> getCreatedCourses() {
+        return new ArrayList<>(createdCourses);
+    }
+
+    @Override
+    public JSONObject toJSONObject() {
+        JSONObject json = new JSONObject();
+        json.put("userId", this.getUserId());
+        json.put("username", this.getUsername());
+        json.put("email", this.getEmail());
+        json.put("passwordHash", this.getPasswordHash());
+        json.put("role", this.getRole());
+
+        JSONArray coursesArray = new JSONArray();
+        for (String courseId: createdCourses) {
+            coursesArray.put(courseId);
+        }
+        json.put("createdCourses", coursesArray);
+
+        return json;
+    }
+}
